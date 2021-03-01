@@ -61,7 +61,7 @@ time.sleep(3)
 # time.sleep(5)
 # print(response)
 now = datetime.datetime.now()
-def cnm(A,B,C):
+def getMessage(A,B,C):
 
     fengxian = driver.find_element_by_class_name(A)
     # input.send_keys("python")#输入搜索关键词
@@ -81,26 +81,26 @@ def cnm(A,B,C):
                 t = (province, city, area, lst[j], C, now)
                 Listgao.append(t)
         else:
-            t = (province, city, area,'所有地区', '高风险', now)
+            t = (province, city, area,'所有地区', C, now)
             Listgao.append(t)
 
-cnm('r-high','h-header','高风险')
+getMessage('r-high','h-header','高风险')
 time.sleep(3)
 hbutton=driver.find_elements_by_id("nextPage")[0]
 while hbutton.is_enabled():
     print('我点了')
     hbutton.click()
     hbutton = driver.find_elements_by_id("nextPage")[0]#重新获取一下按钮
-    cnm('r-high','h-header','高风险')
+    getMessage('r-high','h-header','高风险')
 time.sleep(2)
-cnm('r-middle','m-header','中风险')
+getMessage('r-middle','m-header','中风险')
 time.sleep(3)
 mbutton=driver.find_elements_by_id("nextPage")[1]
 while mbutton.is_enabled():
     print('我点了')
     mbutton.click()
     mbutton = driver.find_elements_by_id("nextPage")[1]#重新获取一下按钮
-    cnm('r-middle', 'm-header', '中风险')
+    getMessage('r-middle', 'm-header', '中风险')
 
 
 print(Listgao)
